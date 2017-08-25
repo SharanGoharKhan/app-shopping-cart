@@ -5,9 +5,12 @@ import { MainComponent } from './main/main.component';
 
 
 const appRoutes: Routes = [
-    {path:'',redirectTo:'/main', pathMatch:'full'},
-    {path:'main',component:MainComponent},
-    {path: 'auth',loadChildren:'./authentication/authentication.module#AuthenticationModule'}
+    {
+        path:'',redirectTo: 'home',pathMatch:'full'
+    },
+    {
+        path: 'auth',loadChildren:'./authentication/authentication.module#AuthenticationModule'
+    }
 ];
 @NgModule(
     {

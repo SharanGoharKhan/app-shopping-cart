@@ -6,25 +6,23 @@ import { MaterialModule} from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { MainComponent } from './main/main.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HeaderComponent } from './main/header/header.component';
-import { FooterComponent } from './main/footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { MainModule } from './main/main.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticationComponent,
     HeaderComponent,
-    FooterComponent,
-    MainComponent
+    FooterComponent
 ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
+    MainModule,
     FlexLayoutModule,
     MaterialModule
   ],
