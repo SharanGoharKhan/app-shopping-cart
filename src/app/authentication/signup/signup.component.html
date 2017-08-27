@@ -1,3 +1,71 @@
-<p>
-  signup works!
-</p>
+<div class="signup-container" style="height:110vh;background-color: white">
+  <div fxLayout="column">
+    <div fxLayoutAlign="center start">
+      <div style="width:80vw;height:100vh;background-color:white;border-color: #D3D3D3;border-radius: 0;border: 1px solid #D3D3D3">
+        <div fxLayout="row">
+          <div class="signup-main-header" style="border-bottom: 1px solid black;margin:1%;width:99%">
+            <h3>Create new customer account</h3>
+          </div>
+        </div>
+        <div fxLayoutAlign="center start">
+          <div fxLayout="row">
+          <form autocomplete="off" #signupForm="ngForm" novalidate>  
+            <div class="form-class-signup" style="width:30vw;height:80vh;background-color:white">
+              <div style="margin-top:2vh" fxLayout="row" fxLayoutGap="2vw">
+                <md-select fxFlex="99" [(ngModel)]="model.gender" #gender="ngModel"  name="gender" placeholder="Select Gender" required>
+                  <md-option *ngFor="let gender of genders" [value]="gender">
+                    <span>{{gender.name}}</span>
+                  </md-option>
+                  <md-error *ngIf="gender.hasError('required') && gender.touched">Please provide a gender.</md-error>
+                </md-select>
+              </div>
+              <div style="margin-top:2vh" fxLayout="row" fxLayoutGap="2vw">
+                <md-input-container fxFlex>
+                  <input mdInput pattern="[A-Za-z]*" minlength="3" maxlength="15" name="firstname" [(ngModel)]="model.first_name" #firstname="ngModel" type="text" placeholder="First Name" required>
+                  <md-error *ngIf="firstname.hasError('required') && firstname.touched">Please provide a first name.</md-error>
+                  <md-error *ngIf="firstname.hasError('minlength') && firstname.touched">Minimum 3 characters required</md-error>
+                  <md-error *ngIf="firstname.hasError('pattern') && (firstname.touched && !firstname.hasError('minlength'))">A name may consist of alphabets only.</md-error>
+                </md-input-container>
+              </div>
+              <div style="margin-top:2vh" fxLayout="row" fxLayoutGap="2vw">
+                <md-input-container fxFlex>
+                  <input mdInput pattern="[A-Za-z]*" minlength="3" maxlength="15" name="lastname" [(ngModel)]="model.last_name" #lastname="ngModel" type="text" placeholder="Last Name" required>
+                  <md-error *ngIf="firstname.hasError('required') && firstname.touched">Please provide a Second name.</md-error>
+                  <md-error *ngIf="firstname.hasError('minlength') && firstname.touched">Minimum 3 characters required</md-error>
+                  <md-error *ngIf="firstname.hasError('pattern') && (firstname.touched && !firstname.hasError('minlength'))">A name may consist of alphabets only.</md-error>
+                </md-input-container>
+              </div>
+              <div style="margin-top:2vh" fxLayout="row" fxLayoutGap="2vw">
+                <md-input-container fxFlex>
+                  <input mdInput [mdDatepicker]="picker" [(ngModel)]="model.birthday" name="birthday" #birthday="ngModel" placeholder="Date Of Birth" required>
+                  <button mdSuffix [mdDatepickerToggle]="picker"></button>
+                  <md-error *ngIf="birthday.hasError('required') && birthday.touched">Please provide a date of birth.</md-error>
+                </md-input-container>
+                <md-datepicker #picker></md-datepicker>
+              </div>
+              <div style="margin-top:2vh" fxLayout="row" fxLayoutGap="2vw">
+                <md-input-container fxFlex>
+                  <input appEmailAsync mdInput name="email" [(ngModel)]="model.email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" #email="ngModel" type="text" name="email" placeholder="Email address" required >
+                  <md-error *ngIf="email.hasError('required') && email.touched">Please provide an email address.</md-error>
+                  <md-error *ngIf="email.hasError('pattern')">Invalid email format.</md-error>
+                  <md-error *ngIf="email.hasError('alreadyExists')">This email already exists.</md-error>
+                </md-input-container>
+              </div>
+              <div style="margin-top:2vh" fxLayout="row" fxLayoutGap="2vw">
+                <md-input-container fxFlex>
+                  <input mdInput maxlength="30" minlength="6" [(ngModel)]="model.password" type="password" name="password" placeholder="Password" #password="ngModel" required>
+                  <md-error *ngIf="password.hasError('required') && password.touched" class="error">Password is required.</md-error>
+                  <md-error *ngIf="password.hasError('minlength')">Password must be at least 6 characters in length.</md-error>
+                </md-input-container>
+              </div>
+              <div style="margin-top:2vh" fxLayout="row" fxLayoutGap="2vw">
+                <button fxFlex (click)="createAccount()" [disabled]="signupForm.invalid" md-raised-button color="primary">Create account</button>    
+              </div>  
+            </div>  
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>     
+</div>
