@@ -13,7 +13,7 @@
             <div class="form-class-signup" style="width:30vw;height:80vh;background-color:white">
               <div style="margin-top:2vh" fxLayout="row" fxLayoutGap="2vw">
                 <md-select fxFlex="99" [(ngModel)]="model.gender" #gender="ngModel"  name="gender" placeholder="Select Gender" required>
-                  <md-option *ngFor="let gender of genders" [value]="gender">
+                  <md-option *ngFor="let gender of genders" [value]="gender.name">
                     <span>{{gender.name}}</span>
                   </md-option>
                   <md-error *ngIf="gender.hasError('required') && gender.touched">Please provide a gender.</md-error>
@@ -30,9 +30,9 @@
               <div style="margin-top:2vh" fxLayout="row" fxLayoutGap="2vw">
                 <md-input-container fxFlex>
                   <input mdInput pattern="[A-Za-z]*" minlength="3" maxlength="15" name="lastname" [(ngModel)]="model.last_name" #lastname="ngModel" type="text" placeholder="Last Name" required>
-                  <md-error *ngIf="firstname.hasError('required') && firstname.touched">Please provide a Second name.</md-error>
-                  <md-error *ngIf="firstname.hasError('minlength') && firstname.touched">Minimum 3 characters required</md-error>
-                  <md-error *ngIf="firstname.hasError('pattern') && (firstname.touched && !firstname.hasError('minlength'))">A name may consist of alphabets only.</md-error>
+                  <md-error *ngIf="lastname.hasError('required') && lastname.touched">Please provide a Second name.</md-error>
+                  <md-error *ngIf="lastname.hasError('minlength') && lastname.touched">Minimum 3 characters required</md-error>
+                  <md-error *ngIf="lastname.hasError('pattern') && (lastname.touched && !lastname.hasError('minlength'))">A name may consist of alphabets only.</md-error>
                 </md-input-container>
               </div>
               <div style="margin-top:2vh" fxLayout="row" fxLayoutGap="2vw">

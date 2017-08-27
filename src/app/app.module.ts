@@ -11,6 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainModule } from './main/main.module';
+import { AuthenticationService } from './services/authetication.service';
+import { SnackbarService } from './services/snackbarservice';
+import { SnotifyService, SnotifyModule } from 'ng-snotify';
+import { LocalStorageService } from './services/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +30,10 @@ import { MainModule } from './main/main.module';
     AppRoutingModule,
     MainModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
+    SnotifyModule
   ],
-  providers: [],
+  providers: [AuthenticationService, SnackbarService, LocalStorageService,SnotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -27,7 +27,6 @@ import { MdDatepickerModule, MdNativeDateModule } from '@angular/material';
 
     ],
     providers: [
-
     ]
 })
 export class SharedModule{}

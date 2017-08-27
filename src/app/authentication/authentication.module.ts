@@ -7,6 +7,9 @@ import { AuthenticationComponent } from './authentication.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { SharedModule } from '../shared/shared.module';
+import { AuthenticationService } from '../services/authetication.service';
+import { SnackbarService } from '../services/snackbarservice';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @NgModule({
   imports: [
