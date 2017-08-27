@@ -1,16 +1,39 @@
-<div class="login-container" style="height:50vh;background-color:aqua">
+<div class="signin-container" style="height:60vh">
   <div fxLayout="column">
-    <div fxLayoutAlign="center center">
-      <div style="width:85vw;height:8vh;background-color:azure">
-        <div fxLayout="row">
-          <div class="login-main-container" style="width:10vw">
-            <h1>Hello</h1>
+    <div fxLayoutAlign="center start">
+      <div style="width:80vw;height:54vh;border-color: #D3D3D3;border-radius: 0;border: 1px solid #D3D3D3">
+        <div fxLayout="row" style="height:8vh;">
+          <div class="signin-main-header" style="border-bottom: 1px solid black;margin:1%;width:99%">
+            <h3>Sign In to your account</h3>
+          </div>
+        </div>
+        <div fxLayoutAlign="start start" style="margin-top:2vh;margin-left:2vh">
+          <div fxLayout="row" fxFlex style="height:30vh;background-color:white">
+          <form fxFlex autocomplete="off" #signinForm="ngForm" novalidate>  
+            <div class="form-class-signup">
+              <div style="margin-top:2vh;height:10vh" fxLayout="row" fxLayoutGap="2vw">
+                <md-input-container fxFlex>
+                  <input appEmailAsync mdInput name="email" [(ngModel)]="model.email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" #email="ngModel" type="text" name="email" placeholder="Email address" required >
+                  <md-error *ngIf="email.hasError('required') && email.touched">Please provide an email address.</md-error>
+                  <md-error *ngIf="email.hasError('pattern')">Invalid email format.</md-error>
+                  <md-error *ngIf="email.hasError('alreadyExists')">This email already exists.</md-error>
+                </md-input-container>
+              </div>
+              <div style="margin-top:2vh;height:10vh" fxLayout="row" fxLayoutGap="2vw">
+                <md-input-container fxFlex>
+                  <input mdInput maxlength="30" minlength="6" [(ngModel)]="model.password" type="password" name="password" placeholder="Password" #password="ngModel" required>
+                  <md-error *ngIf="password.hasError('required') && password.touched" class="error">Password is required.</md-error>
+                  <md-error *ngIf="password.hasError('minlength')">Password must be at least 6 characters in length.</md-error>
+                </md-input-container>
+              </div>
+              <div style="margin-top:2vh;height:10vh" fxLayout="row" fxLayoutGap="2vw">
+                <button fxFlex (click)="loginAccount()" [disabled]="signinForm.invalid" md-raised-button color="primary">Create account</button>    
+              </div>  
+            </div>  
+          </form>
           </div>
         </div>
       </div>
     </div>  
   </div>     
-</div> 
-
-
- 
+</div>
